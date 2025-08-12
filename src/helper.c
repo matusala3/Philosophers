@@ -6,7 +6,7 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 17:11:06 by magebreh          #+#    #+#             */
-/*   Updated: 2025/08/12 17:12:49 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/08/12 21:14:56 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void error_exit(char *err)
 {
-    printf("%s\n", err);
-    exit(EXIT_FAILURE);
+	printf("%s\n", err);
+	exit(EXIT_FAILURE);
 }

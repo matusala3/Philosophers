@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/12 13:47:04 by magebreh          #+#    #+#             */
-/*   Updated: 2025/08/12 20:56:32 by magebreh         ###   ########.fr       */
+/*   Created: 2025/08/12 20:56:06 by magebreh          #+#    #+#             */
+/*   Updated: 2025/08/12 21:22:29 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int argc, char **argv)
+int init(t_data *table)
 {
-	t_data table;
-
-	if(argc != 5 && argc != 6)
-		error_exit("Usage: ./philo 3 600 100 100 [3]");
-	if(parse_arg(&table.cfg, argc, argv) != 0)
-		error_exit("error on parsing the argument");
-	if(init_sim(&table) != 0)
-		error_exit("error on initalizing  simulation");
-	run_sim(&table);
-	cleanup(&table);
+	table->philos = malloc(sizeof(t_philo) * table->cfg.philo_num);
+	if(!table->philos)
+		return (1);
+	table->forks = malloc(sizeof(t_fork) * table->cfg.philo_num);
+	if(!table->forks)
+	{
+		free(table->philos);
+		return(1);
+	}
 	return (0);
+}
+
+int safe_mutex_handle(pthread_mutex_t *mutex, int op)
+{
+	//if op is lock call the fucntion othread_mutex_lock and 
+	//do this for unlock, init and destroy
 }

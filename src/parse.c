@@ -6,13 +6,13 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 14:00:41 by magebreh          #+#    #+#             */
-/*   Updated: 2025/08/12 20:09:09 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/08/12 20:55:20 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int parse_int(const char *str, int *i)
+static int parse_int(const char *str, int *i)
 {
 	while (str[*i] == ' ' || (str[*i] >= 9 && str[*i] <= 13))
 		(*i)++;
@@ -21,7 +21,7 @@ int parse_int(const char *str, int *i)
 	return (1);
 }
 
-long ft_atol_safe(const char *str, int *err)
+static long ft_atol_safe(const char *str, int *err)
 {
 	int	i;
 	int sign;
@@ -49,7 +49,7 @@ long ft_atol_safe(const char *str, int *err)
 	return (res);
 }
 
-int ft_atol(const char *str, int *res)
+static int ft_atol(const char *str, int *res)
 {
 	int err;
 	long	val;

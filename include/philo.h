@@ -6,7 +6,7 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:33:02 by magebreh          #+#    #+#             */
-/*   Updated: 2025/08/12 17:13:59 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/08/12 21:11:37 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,6 @@ typedef struct s_philo
 
 //helper
 void error_exit(char *err);
+void *safe_malloc(size_t bytes);
+
+int parse_arg(t_config *cfg, int argc, char **argv);
