@@ -6,7 +6,7 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 14:00:41 by magebreh          #+#    #+#             */
-/*   Updated: 2025/08/12 20:55:20 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/11/18 12:46:59 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,5 @@ int parse_arg(t_config *cfg, int argc, char **argv)
 	}
 	else
 		cfg->meal_limit = -1;
+	return (0);
 }

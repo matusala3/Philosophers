@@ -6,7 +6,7 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 13:47:04 by magebreh          #+#    #+#             */
-/*   Updated: 2025/08/12 20:56:32 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/11/18 19:24:47 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int main(int argc, char **argv)
 	if(init_sim(&table) != 0)
 		error_exit("error on initalizing  simulation");
 	run_sim(&table);
-	cleanup(&table);
+	// cleanup(&table);
 	return (0);
 }

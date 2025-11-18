@@ -6,7 +6,7 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:33:02 by magebreh          #+#    #+#             */
-/*   Updated: 2025/08/12 21:11:37 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/11/18 18:53:13 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,6 @@ typedef enum e_philo_state
     PH_DEAD
 }   t_philo_state;
 
-typedef struct s_data
-{
-    t_config         cfg;
-    t_fork          *forks;
-    t_philo         *philos;
-    int              stop;
-    pthread_mutex_t  stop_mtx;
-    pthread_mutex_t  log_mtx;
-    uint64_t         start_us;
-    pthread_t        monitor;
-}   t_data;
-
-typedef struct s_fork
-{
-    int             id;
-    pthread_mutex_t mtx;
-}   t_fork;
-
 typedef struct s_config
 {
     int philo_num;
@@ -54,6 +36,11 @@ typedef struct s_config
     int meal_limit;
 }   t_config;
 
+typedef struct s_fork
+{
+    int             id;
+    pthread_mutex_t mtx;
+}   t_fork;
 
 typedef struct s_philo
 {
@@ -68,8 +55,24 @@ typedef struct s_philo
     t_data          *table;
 }   t_philo;
 
+
+typedef struct s_data
+{
+    t_config         cfg;
+    t_fork          *forks;
+    t_philo         *philos;
+    int              stop;
+    pthread_mutex_t  stop_mtx;
+    pthread_mutex_t  log_mtx;
+    uint64_t         start_us;
+    pthread_t        monitor;
+}   t_data;
+
+
 //helper
 void error_exit(char *err);
-void *safe_malloc(size_t bytes);
+uint64_t get_time_us(void);
+
+int init(t_data *table);
 
 int parse_arg(t_config *cfg, int argc, char **argv);
