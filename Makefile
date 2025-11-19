@@ -14,7 +14,9 @@ SRC = main.c \
 	  parser.c \
 	  init.c \
 	  helper.c \
-	  cleanup.c
+	  cleanup.c \
+	  run.c \
+	  routine.c \
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 

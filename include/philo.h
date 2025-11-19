@@ -6,7 +6,7 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:33:02 by magebreh          #+#    #+#             */
-/*   Updated: 2025/11/18 18:53:13 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/11/19 16:33:22 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,3 +76,11 @@ uint64_t get_time_us(void);
 int init(t_data *table);
 
 int parse_arg(t_config *cfg, int argc, char **argv);
+void *philo_routine(void *arg);
+int run_sim(t_data *table);
+
+
+void cleanup_philo_mutexes(t_data *table, int count);
+void cleanup_fork_mutexes(t_data *table, int count);
+void cleanup_all_array_mutexes(t_data *table);
+void cleanup_partial_threads(t_data *table, int created_count);
