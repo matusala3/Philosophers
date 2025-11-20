@@ -6,11 +6,11 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 17:11:06 by magebreh          #+#    #+#             */
-/*   Updated: 2025/11/19 17:12:51 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/11/20 19:49:59 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 void error_exit(char *err)
 {
@@ -36,6 +36,22 @@ void log_action(t_philo *philo, char *action)
 		return ;
 	pthread_mutex_lock(&philo->table->log_mtx);
 	elapsed_ms = (current_time - philo->table->start_us) / 1000;
-	printf("%llu %d %s\n", elapsed_ms, philo->id, action);
+	printf("%llu %d %s\n", (unsigned long long)elapsed_ms, philo->id, action);
 	pthread_mutex_unlock(&philo->table->log_mtx);
+}
+
+void release_forks(t_philo *philo)
+{
+    pthread_mutex_unlock(&philo->left->mtx);
+    pthread_mutex_unlock(&philo->right->mtx);
+}
+
+int should_stop(t_data *table)
+{
+    int stop;
+
+    pthread_mutex_lock(&table->stop_mtx);
+    stop = table->stop;
+    pthread_mutex_unlock(&table->stop_mtx);
+    return (stop);    
 }

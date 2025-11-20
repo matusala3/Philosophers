@@ -6,7 +6,7 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:33:02 by magebreh          #+#    #+#             */
-/*   Updated: 2025/11/19 16:33:22 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/11/20 19:50:06 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_fork
     pthread_mutex_t mtx;
 }   t_fork;
 
+typedef struct s_data t_data;
+
 typedef struct s_philo
 {
     int              id;
@@ -54,7 +56,6 @@ typedef struct s_philo
     t_philo_state    state;
     t_data          *table;
 }   t_philo;
-
 
 typedef struct s_data
 {
@@ -69,17 +70,24 @@ typedef struct s_data
 }   t_data;
 
 
+
 //helper
 void error_exit(char *err);
 uint64_t get_time_us(void);
+void log_action(t_philo *philo, char *action);
+void release_forks(t_philo *philo);
+int should_stop(t_data *table);
 
+//init.c
 int init(t_data *table);
 
 int parse_arg(t_config *cfg, int argc, char **argv);
 void *philo_routine(void *arg);
 int run_sim(t_data *table);
+void *monitor_routine(void *arg);
+void cleanup(t_data *table);
 
-
+//cleanup.c
 void cleanup_philo_mutexes(t_data *table, int count);
 void cleanup_fork_mutexes(t_data *table, int count);
 void cleanup_all_array_mutexes(t_data *table);

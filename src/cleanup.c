@@ -6,11 +6,11 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 17:49:04 by magebreh          #+#    #+#             */
-/*   Updated: 2025/11/19 13:02:54 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/11/20 19:36:49 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 void cleanup_philo_mutexes(t_data *table, int count)
 {

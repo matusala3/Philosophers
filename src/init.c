@@ -6,39 +6,11 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 20:56:06 by magebreh          #+#    #+#             */
-/*   Updated: 2025/11/18 19:44:17 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/11/20 19:50:57 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
-
-int init(t_data *table)
-{
-	table->philos = malloc(sizeof(t_philo) * table->cfg.philo_num);
-	if(!table->philos)
-		return (1);
-	table->forks = malloc(sizeof(t_fork) * table->cfg.philo_num);
-	if(!table->forks)
-	{
-		free(table->philos);
-		return(1);
-	}
-	init_philos(table);
-	if(init_philo_fork(table))
-	{
-		free(table->philos);
-		free(table->forks);
-		return (1);
-	}
-	if(init_table_mutexes(table))
-	{
-		cleanup_all_array_mutexes(table);
-        free(table->philos);
-        free(table->forks);
-        return (1);
-	}
-	return (0);
-}
+#include "../include/philo.h"
 
 static void init_philos(t_data *table)
 {
@@ -96,4 +68,32 @@ static int init_table_mutexes(t_data *table)
         return (1);
     }
     return (0);
+}
+
+int init(t_data *table)
+{
+	table->philos = malloc(sizeof(t_philo) * table->cfg.philo_num);
+	if(!table->philos)
+		return (1);
+	table->forks = malloc(sizeof(t_fork) * table->cfg.philo_num);
+	if(!table->forks)
+	{
+		free(table->philos);
+		return(1);
+	}
+	init_philos(table);
+	if(init_philo_fork(table))
+	{
+		free(table->philos);
+		free(table->forks);
+		return (1);
+	}
+	if(init_table_mutexes(table))
+	{
+		cleanup_all_array_mutexes(table);
+        free(table->philos);
+        free(table->forks);
+        return (1);
+	}
+	return (0);
 }

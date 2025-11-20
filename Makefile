@@ -11,12 +11,13 @@ OBJ_DIR = obj
 RM = rm -f
 
 SRC = main.c \
-	  parser.c \
+	  parse.c \
 	  init.c \
 	  helper.c \
 	  cleanup.c \
 	  run.c \
 	  routine.c \
+	  monitor.c 
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 

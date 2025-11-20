@@ -6,11 +6,11 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 14:00:41 by magebreh          #+#    #+#             */
-/*   Updated: 2025/11/18 12:46:59 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/11/20 19:37:14 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 static int parse_int(const char *str, int *i)
 {
