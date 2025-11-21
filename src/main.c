@@ -42,7 +42,6 @@ void cleanup(t_data *table)
 		free(table->forks);
 		table->forks = NULL;
 	}
-	printf("✅ Cleanup completed successfully\n");
 }
 
 int check_meal_limit(t_data  *table)
@@ -67,8 +66,7 @@ int check_meal_limit(t_data  *table)
 		pthread_mutex_lock(&table->stop_mtx);
 		table->stop = 1;
 		pthread_mutex_unlock(&table->stop_mtx);
-		printf("✅ All philosophers have eaten %d times\n", table->cfg.meal_limit);
-		return (1);		
+		return (1);
 	}
 	return(0);
 }

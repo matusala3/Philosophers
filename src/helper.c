@@ -31,10 +31,17 @@ void log_action(t_philo *philo, char *action)
 	uint64_t current_time;
 	uint64_t elapsed_ms;
 
+	if(should_stop(philo->table))
+		return ;
 	current_time = get_time_us();
 	if(current_time == 0)
 		return ;
 	pthread_mutex_lock(&philo->table->log_mtx);
+	if(should_stop(philo->table))
+	{
+		pthread_mutex_unlock(&philo->table->log_mtx);
+		return ;
+	}
 	elapsed_ms = (current_time - philo->table->start_us) / 1000;
 	printf("%llu %d %s\n", (unsigned long long)elapsed_ms, philo->id, action);
 	pthread_mutex_unlock(&philo->table->log_mtx);

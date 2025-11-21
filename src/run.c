@@ -27,7 +27,6 @@ static int create_philosopher_threads(t_data *table)
         }
         i++;
     }
-    printf("✅ Successfully created %d philosopher threads\n", i);
     return (0);    
 }
 
@@ -35,10 +34,8 @@ static int create_monitor_thread(t_data *table)
 {
     if(pthread_create(&table->monitor, NULL, monitor_routine, table) != 0)
     {
-        printf("ErrorL Faild to create monitor thread\n");
         return (1);
     }
-    printf("✅ Monitor thread created successfully\n");
     return (0);
 }
 
@@ -60,10 +57,6 @@ static void wait_for_sim_end(t_data *table)
         }
         i++;
     }
-    if(failed_joins > 0)
-        printf("Warning: %d threads may not have joined properly\n", failed_joins);
-    else
-        printf("✅ All threads joined successfully\n");
 }
 
 int run_sim(t_data *table)
