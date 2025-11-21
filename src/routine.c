@@ -75,12 +75,19 @@ static void eat(t_philo *philo)
 
 static void think(t_philo *philo)
 {
+    int think_time;
+
     pthread_mutex_lock(&philo->state_mtx);
     philo->state = PH_THINKING;
     pthread_mutex_unlock(&philo->state_mtx);
     log_action(philo, "is thinking");
     if(philo->table->cfg.philo_num > 1 && philo->table->cfg.philo_num % 2 == 1)
-        usleep(1000);
+    {
+        think_time = philo->table->cfg.time_to_eat_ms;
+        if(think_time > philo->table->cfg.time_to_sleep_ms)
+            think_time = think_time - philo->table->cfg.time_to_sleep_ms;
+        usleep(think_time * 1000);
+    }
 }
 
 void *philo_routine(void *arg)
