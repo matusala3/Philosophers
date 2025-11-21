@@ -6,7 +6,7 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 15:48:33 by magebreh          #+#    #+#             */
-/*   Updated: 2025/11/20 20:01:32 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/11/21 12:00:31 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ static int check_all_philos(t_data *table)
         }
         i++;
     }
+    if(check_meal_limit(table))
+        return (1);
     return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:33:02 by magebreh          #+#    #+#             */
-/*   Updated: 2025/11/20 19:50:06 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/11/21 11:59:50 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void *philo_routine(void *arg);
 int run_sim(t_data *table);
 void *monitor_routine(void *arg);
 void cleanup(t_data *table);
+int check_meal_limit(t_data  *table);
 
 //cleanup.c
 void cleanup_philo_mutexes(t_data *table, int count);

@@ -6,7 +6,7 @@
 /*   By: magebreh <magebreh@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/12 20:56:06 by magebreh          #+#    #+#             */
-/*   Updated: 2025/11/20 19:50:57 by magebreh         ###   ########.fr       */
+/*   Updated: 2025/11/21 15:16:02 by magebreh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void init_philos(t_data *table)
 		table->forks[i].id = i;
 		table->philos[i].id = i + 1;
 		table->philos[i].meals_done = 0;
-		table->philos[i].last_meal_us = 0;
+		table->philos[i].last_meal_us = table->start_us;
 		table->philos[i].state = PH_THINKING;
 		table->philos[i].left = &table->forks[i];
 		table->philos[i].right = &table->forks[(i + 1) % table->cfg.philo_num];
