@@ -83,9 +83,11 @@ static void think(t_philo *philo)
     log_action(philo, "is thinking");
     if(philo->table->cfg.philo_num > 1 && philo->table->cfg.philo_num % 2 == 1)
     {
-        think_time = philo->table->cfg.time_to_eat_ms;
+        think_time = philo->table->cfg.time_to_eat_ms * 2;
         if(think_time > philo->table->cfg.time_to_sleep_ms)
             think_time = think_time - philo->table->cfg.time_to_sleep_ms;
+        else
+            think_time = 0;
         usleep(think_time * 1000);
     }
 }

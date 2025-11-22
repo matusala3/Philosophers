@@ -17,10 +17,13 @@ static void log_death(t_data *table, int philo_id)
     uint64_t current_time;
     uint64_t elapsed_ms;
 
+    pthread_mutex_lock(&table->log_mtx);
     current_time = get_time_us();
     if(current_time == 0)
+    {
+        pthread_mutex_unlock(&table->log_mtx);
         return;
-    pthread_mutex_lock(&table->log_mtx);
+    }
     elapsed_ms = (current_time - table->start_us) / 1000;
     printf("%llu %d died\n", (unsigned long long)elapsed_ms, philo_id);
     pthread_mutex_unlock(&table->log_mtx);

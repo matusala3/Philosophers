@@ -33,11 +33,14 @@ void log_action(t_philo *philo, char *action)
 
 	if(should_stop(philo->table))
 		return ;
-	current_time = get_time_us();
-	if(current_time == 0)
-		return ;
 	pthread_mutex_lock(&philo->table->log_mtx);
 	if(should_stop(philo->table))
+	{
+		pthread_mutex_unlock(&philo->table->log_mtx);
+		return ;
+	}
+	current_time = get_time_us();
+	if(current_time == 0)
 	{
 		pthread_mutex_unlock(&philo->table->log_mtx);
 		return ;
